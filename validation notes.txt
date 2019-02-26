@@ -1,0 +1,13 @@
+2019-02-26
+    Residential Duty Commercial Water Heaters (WARS) for MAEDBS validation.
+    downloaded all the Residential Duty Commercial Water Heaters 
+    start R script to review data while looking at WARS_MAEDbSValidation.xlsx
+    
+    copy setup.R and load_RECS.R 
+    from /home/jiml/HotWaterResearch/projects/HPWH/California HPWH/working groups/market analysis/CA_WH_analysis/
+    used  find . -iname *.R -atime 15 
+        to find recent *.R files
+
+    https://happygitwithr.com/
+        Chapter 16 Existing project, GitHub first
+            
