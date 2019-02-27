@@ -63,17 +63,19 @@ DT_WARS[ ,list(n=.N),
 
 # summary of Measured Volume by Energy Source
 ngas <- DT_WARS[1,'Energy Source']
+ngas$`Energy Source`
 
-DT_WARS[grepl("Natural gas","Energy Source"),] # no
-DT_WARS[grep("Natural gas","Energy Source"),] # no
-DT_WARS[, 'Energy Source'] # yes
-DT_WARS$'Energy Source'== "Natural gas"  # yes
+DT_WARS[grepl("Natural gas",`Energy Source`),] # yes
+DT_WARS[grep("Natural gas",`Energy Source`),] # yes
+DT_WARS[, `Energy Source`] # yes
+DT_WARS$`Energy Source`== "Natural gas"  # yes
 DT_WARS['Energy Source'== "Natural gas",] # no
+DT_WARS[`Energy Source`== "Natural gas",] # yes
 DT_WARS["Energy Source"== "Natural gas",] # no
-DT_WARS['Energy Source' %in% c("Natural gas"),] # no
-DT_WARS['Energy Source' %in% "Natural gas",] # no
-DT_WARS['Energy Source' %like% "Natural gas",] # no
-DT_WARS["Natural gas" %like% 'Energy Source',] # no
+DT_WARS[`Energy Source` %in% c("Natural gas"),] # yes
+DT_WARS[`Energy Source` %in% "Natural gas",] # yes
+DT_WARS[`Energy Source` %like% "Natural gas",] # yes
+DT_WARS["Natural gas" %like% `Energy Source`,] # no
 
 DT_WARS[DT_WARS$'Energy Source'== "Natural gas","Energy Source"] # yes
 
