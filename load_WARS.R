@@ -76,3 +76,18 @@ DT_WARS['Energy Source' %like% "Natural gas",] # no
 DT_WARS["Natural gas" %like% 'Energy Source',] # no
 
 DT_WARS[DT_WARS$'Energy Source'== "Natural gas","Energy Source"] # yes
+
+setnames(DT_WARS, old = c("Energy Source"),
+         new = c("Energy_Source"))
+
+DT_WARS[grepl("Natural gas",Energy_Source),] # yes
+DT_WARS[grep("Natural gas",Energy_Source),] # yes
+DT_WARS[, Energy_Source] # yes
+DT_WARS$Energy_Source== "Natural gas"  # yes
+DT_WARS[Energy_Source== "Natural gas",] # yes
+DT_WARS[Energy_Source== "Natural gas",] # yes
+DT_WARS[Energy_Source %in% c("Natural gas"),] # yes
+DT_WARS[Energy_Source %in% "Natural gas",] # yes
+DT_WARS[Energy_Source %like% "Natural gas",] # yes
+DT_WARS["Natural gas" %like% Energy_Source,] # no
+
