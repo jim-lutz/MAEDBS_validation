@@ -62,34 +62,30 @@ DT_WARS[ ,list(n=.N),
 # 3: Electric resistance   9
 
 # summary of Measured Volume by Energy Source
-ngas <- DT_WARS[1,'Energy Source']
-ngas$`Energy Source`
+DT_WARS[ ,list(min = min(`Measured Volume`),
+               ave = mean(`Measured Volume`),
+               max = max(`Measured Volume`)),
+         by=`Energy Source`]
+#          Energy Source min      ave max
+# 1:         Natural gas  20 69.51376 112
+# 2:                 LPG  20 67.94253 112
+# 3: Electric resistance   1  1.00000   1
+# The electric resistance are tankless?
 
-DT_WARS[grepl("Natural gas",`Energy Source`),] # yes
-DT_WARS[grep("Natural gas",`Energy Source`),] # yes
-DT_WARS[, `Energy Source`] # yes
-DT_WARS$`Energy Source`== "Natural gas"  # yes
-DT_WARS['Energy Source'== "Natural gas",] # no
-DT_WARS[`Energy Source`== "Natural gas",] # yes
-DT_WARS["Energy Source"== "Natural gas",] # no
-DT_WARS[`Energy Source` %in% c("Natural gas"),] # yes
-DT_WARS[`Energy Source` %in% "Natural gas",] # yes
-DT_WARS[`Energy Source` %like% "Natural gas",] # yes
-DT_WARS["Natural gas" %like% `Energy Source`,] # no
+DT_WARS[,`Regulatory Status`]
+# it's all  "Federally-Regulated Commercial & Industrial Equipment"
 
-DT_WARS[DT_WARS$'Energy Source'== "Natural gas","Energy Source"] # yes
+# compare `Measured Volume` and `Uniform Energy Factor`
+ggplot(data = DT_WARS) +
+  geom_point(aes(x=`Measured Volume`, y=`Uniform Energy Factor`)) +
+  facet_wrap(vars(`Energy Source`), scales = "free")
+# nothing surprising
 
-setnames(DT_WARS, old = c("Energy Source"),
-         new = c("Energy_Source"))
+# compare `Input Rating` and `Uniform Energy Factor`
+ggplot(data = DT_WARS) +
+  geom_point(aes(x=`Input Rating`, y=`Uniform Energy Factor`,
+                 color=`Energy Source`)) +
+  facet_wrap(vars(`Water Heater Type`), scales = "free")
 
-DT_WARS[grepl("Natural gas",Energy_Source),] # yes
-DT_WARS[grep("Natural gas",Energy_Source),] # yes
-DT_WARS[, Energy_Source] # yes
-DT_WARS$Energy_Source== "Natural gas"  # yes
-DT_WARS[Energy_Source== "Natural gas",] # yes
-DT_WARS[Energy_Source== "Natural gas",] # yes
-DT_WARS[Energy_Source %in% c("Natural gas"),] # yes
-DT_WARS[Energy_Source %in% "Natural gas",] # yes
-DT_WARS[Energy_Source %like% "Natural gas",] # yes
-DT_WARS["Natural gas" %like% Energy_Source,] # no
+
 
