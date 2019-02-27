@@ -1,19 +1,19 @@
-# load_RECS.R
-# script to read RECS 2009 data from ../2009 RECS/recs2009_public.csv
-# and ../2009 RECS/recs2009_public_repweights.csv
-# see ../2009 RECS/public_layout.csv for variable names
-# and  ../2009 RECS/recs2009_public_codebook.xlsx for values of variables
-# started by Jim Lutz "Fri Feb  1 07:30:01 2019"
+# load_WARS.R
+# script to read '2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv'
+# from https://cacertappliances.energy.ca.gov/Pages/Search/AdvancedSearch.aspx
+# and review 2nd stage validation for CEC Appliance Standards
+# started by Jim Lutz "Tue Feb 26 15:46:04 2019"
 
 # set packages & etc
 source("setup.R")
 
 # set up paths to working directories
-wd_RECS <- "../2009 RECS/"
+wd_WARS <- "/home/jiml/HotWaterResearch/projects/CEC Appliance Standards/2019-02-25 validation/"
 
-# read the recs2009_public.csv
-DT_RECS <-
-  fread(file = paste0(wd_RECS,"recs2009_public.csv"))
+# read '2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv'
+DT_WARS <-
+  read_xls(path = paste0(wd_WARS,
+                      "2019-02-26 Residential Duty Commercial Water Heaters (WARS).xls"))
 
 # see what's there
 length(names(DT_RECS))

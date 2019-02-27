@@ -41,14 +41,16 @@ library(data.table)
 if(!require(tidyverse)){install.packages("tidyverse")}
 library(tidyverse)
 
+
+
 # work with plotly
 # https://plot.ly/r/getting-started/#getting-started-with-plotly-for-r
 if(!require(plotly)){install.packages("plotly")}
 library(plotly)
 
-# work with openxlsx
-if (!require('openxlsx')) install.packages('openxlsx')
-library('openxlsx')
+# work with readxl
+if (!require('readxl')) install.packages('readxl')
+library('readxl')
 
 # work with GGally
 if (!require('GGally')) install.packages('GGally')

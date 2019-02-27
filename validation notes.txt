@@ -10,4 +10,21 @@
 
     https://happygitwithr.com/
         Chapter 16 Existing project, GitHub first
+        
+    2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv problems?
+        Warning messages:
+        1: In fread(file = paste0(wd_WARS, "2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv")) :
+        Detected 15 column names but the data has 19 columns (i.e. invalid file). Added 4 extra default column names at the end.
+        2: In fread(file = paste0(wd_WARS, "2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv")) :
+        Stopped early on line 25. Expected 19 fields but found 5. Consider fill=TRUE and comment.char=. First discarded non-empty line: <<A.O. Smith Corporation,A. O. SMITH,G6-S7576NV,Federally-Regulated Commercial & Industrial Equipment,Natural gas>>
+
+    try excel instead 
+    needed to load package readxl
+    
+    Error: 
+  filepath: /home/jiml/HotWaterResearch/projects/CEC Appliance Standards/2019-02-25 validation/2019-02-26 Residential Duty Commercial Water Heaters (WARS).xls
+  libxls error: Unable to open file
+    
+    opened and saved with libreoffice calc first then it worked.
+            
             
