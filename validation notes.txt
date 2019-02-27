@@ -27,4 +27,5 @@
     
     opened and saved with libreoffice calc first then it worked.
             
-                
+    trouble getting character matches on "Energy Source" string in DT_WARS
+               

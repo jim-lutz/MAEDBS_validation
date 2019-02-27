@@ -21,9 +21,10 @@ if(!dir.exists("./charts")){
 }
 
 # read '2019-02-26 Residential Duty Commercial Water Heaters (WARS).csv'
-DT_WARS <-
+DT_WARS <- data.table(
   read_xls(path = paste0(wd_WARS,
                       "2019-02-26 Residential Duty Commercial Water Heaters (WARS).xls"))
+  )
 
 # see what's there
 length(names(DT_WARS))
@@ -50,4 +51,28 @@ names(DT_WARS)
 # [17] "Uniform Energy Factor Standard"                                                    
 # [18] "Add Date"                                                                          
 
+str(DT_WARS)
 
+# look at Energy Source
+DT_WARS[ ,list(n=.N),
+         by=c('Energy Source')]
+#          Energy Source   n
+# 1:         Natural gas 109
+# 2:                 LPG  87
+# 3: Electric resistance   9
+
+# summary of Measured Volume by Energy Source
+ngas <- DT_WARS[1,'Energy Source']
+
+DT_WARS[grepl("Natural gas","Energy Source"),] # no
+DT_WARS[grep("Natural gas","Energy Source"),] # no
+DT_WARS[, 'Energy Source'] # yes
+DT_WARS$'Energy Source'== "Natural gas"  # yes
+DT_WARS['Energy Source'== "Natural gas",] # no
+DT_WARS["Energy Source"== "Natural gas",] # no
+DT_WARS['Energy Source' %in% c("Natural gas"),] # no
+DT_WARS['Energy Source' %in% "Natural gas",] # no
+DT_WARS['Energy Source' %like% "Natural gas",] # no
+DT_WARS["Natural gas" %like% 'Energy Source',] # no
+
+DT_WARS[DT_WARS$'Energy Source'== "Natural gas","Energy Source"] # yes
